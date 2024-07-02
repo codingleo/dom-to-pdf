@@ -99,7 +99,7 @@ downloadPdf = (dom, options, cb) => {
     format: 'a4'
   };
 
-  ({filename, excludeClassNames = [], excludeTagNames = ['button', 'input', 'select'], overrideWidth, proxyUrl, compression, scale} = options);
+  ({filename, excludeClassNames = [], excludeTagNames = ['button', 'input', 'select'], overrideWidth, proxyUrl, compression, scale, output = 'pdf'} = options);
 
   overlayCSS = {
     position: 'fixed',
@@ -283,6 +283,11 @@ downloadPdf = (dom, options, cb) => {
     if (typeof cb === "function") {
       cb(pdf);
     }
+
+    if (output === 'base64') {
+      return pdf.output('datauristring');
+    }
+
     return pdf.save(filename);
   }).catch(error => {
     // Remove overlay
