@@ -284,6 +284,10 @@ downloadPdf = (dom, options, cb) => {
       cb(pdf);
     }
 
+    if (output === 'blob') {
+      return pdf.output('blob');
+    }
+
     if (output === 'base64') {
       return pdf.output('datauristring');
     }
