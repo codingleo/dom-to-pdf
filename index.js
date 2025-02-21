@@ -292,7 +292,11 @@ downloadPdf = (dom, options, cb) => {
       return pdf.output('datauristring');
     }
 
-    return pdf.save(filename);
+    if (output === 'pdf') {
+      return pdf.save(filename);
+    }
+
+    return pdf
   }).catch(error => {
     // Remove overlay
     document.body.removeChild(overlay);
