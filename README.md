@@ -2,6 +2,9 @@
 
 dom-to-pdf generates a printable PDF from DOM node using HTML5 canvas and svg.
 
+[![npm version](https://badge.fury.io/js/dom-to-pdf-magic.svg)](https://badge.fury.io/js/dom-to-pdf-magic)
+[![Test](https://github.com/codingleo/dom-to-pdf/actions/workflows/test.yml/badge.svg)](https://github.com/codingleo/dom-to-pdf/actions/workflows/test.yml)
+
 ## Install
 
 ```bash
@@ -142,6 +145,24 @@ domToPdf(document.getElementById('content')!, options)
     console.log('Done!');
   });
 ```
+
+## Development
+
+### Running Tests
+
+```bash
+npm test
+```
+
+### Building
+
+```bash
+npm run build
+```
+
+### Release Process
+
+This package uses GitHub Actions for automated releases. See [RELEASING.md](RELEASING.md) for details on how to create new releases.
 
 ## Support
 <a href='https://ko-fi.com/Y8Y5ZDQP' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
