@@ -1,6 +1,6 @@
-# dom-to-pdf
+# dom-to-pdf-magic
 
-dom-to-pdf generates a printable PDF from DOM node using HTML5 canvas and svg.
+dom-to-pdf-magic generates a printable PDF from DOM node using HTML5 canvas and svg.
 
 [![npm version](https://badge.fury.io/js/dom-to-pdf-magic.svg)](https://badge.fury.io/js/dom-to-pdf-magic)
 [![Test](https://github.com/codingleo/dom-to-pdf/actions/workflows/test.yml/badge.svg)](https://github.com/codingleo/dom-to-pdf/actions/workflows/test.yml)
