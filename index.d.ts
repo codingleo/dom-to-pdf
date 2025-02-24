@@ -1,66 +1,60 @@
-declare module 'html-to-pdf-js' {
-  interface PdfOptions {
+declare module 'dom-to-pdf-magic' {
+  interface DomToPdfOptions {
     /**
-     * The filename for the downloaded PDF
+     * Name of the resulted PDF file, default name is 'generated.pdf'
      */
-    filename: string
-
+    filename?: string;
+    
     /**
-     * Class names to exclude from the PDF
-     * @default []
+     * List of class names of elements to exclude from PDF
      */
-    excludeClassNames?: string[]
-
+    excludeClassNames?: string[];
+    
     /**
-     * HTML tag names to exclude from the PDF
-     * @default ['button', 'input', 'select']
+     * List of html tags to exclude from PDF
      */
-    excludeTagNames?: string[]
-
+    excludeTagNames?: string[];
+    
     /**
-     * Override the width of the container
+     * Overrides the width of a container DOM element
      */
-    overrideWidth?: number
-
+    overrideWidth?: number;
+    
     /**
-     * Proxy URL for loading external resources
+     * A route in your app which renders images on your domain to avoid CORS issues
      */
-    proxyUrl?: string
-
+    proxyUrl?: string;
+    
     /**
-     * PDF compression type
-     * @default 'NONE'
+     * Compression of the generated image, can have the values 'NONE', 'FAST', 'MEDIUM' and 'SLOW'
      */
-    compression?: string
-
+    compression?: 'NONE' | 'FAST' | 'MEDIUM' | 'SLOW';
+    
     /**
-     * Scale factor for the PDF
+     * Increases an image's size before exporting to improve the image quality
      */
-    scale?: number
-
+    scale?: number;
+    
     /**
-     * Output format of the result
-     * @default 'pdf'
+     * Output format of the generated document
      */
-    output?: 'pdf' | 'blob' | 'base64'
+    output?: 'pdf' | 'blob' | 'base64';
   }
 
-  /**
-   * Converts a DOM element to PDF and handles the download
-   * @param dom - The DOM element to convert
-   * @param options - Configuration options for the PDF conversion
-   * @param cb - Optional callback function that receives the jsPDF instance
-   * @returns Promise that resolves with different types based on output option:
-   * - 'pdf': void (triggers download)
-   * - 'blob': Blob
-   * - 'base64': string
-   * - default: jsPDF instance
-   */
-  function downloadPdf(
-    dom: HTMLElement,
-    options: PdfOptions,
-    cb?: (pdf: any | null) => void
-  ): Promise<void | Blob | string | any>
+  type PdfResult = any; // This will be the jsPDF instance or output depending on options
 
-  export = downloadPdf
+  /**
+   * Generate a PDF from a DOM element
+   * @param element The element to generate PDF from
+   * @param options The options for PDF generation
+   * @param callback Optional callback function that receives the generated PDF
+   * @returns A promise that resolves to the generated PDF
+   */
+  function domToPdf(
+    element: HTMLElement,
+    options?: DomToPdfOptions,
+    callback?: (result: PdfResult) => void
+  ): Promise<PdfResult>;
+
+  export = domToPdf;
 }
